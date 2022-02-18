@@ -1,4 +1,5 @@
 import Main from '../main/main';
+import Header from '../header/header';
 
 type AppProps = {
   placesCount: number;
@@ -6,7 +7,10 @@ type AppProps = {
 
 function App({placesCount}: AppProps): JSX.Element {
   return (
-    <Main placesCount={placesCount} />
+    <div className="page page--gray page--main">
+      <Header />
+      <Main placesCount={placesCount} />
+    </div>
   );
 }
 
