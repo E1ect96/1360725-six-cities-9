@@ -4,7 +4,7 @@ import FavoritesCard from '../favorites-card/favorites-card';
 function Favorites():JSX.Element {
   return (
     <div className="page">
-      {<Header />}
+      <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
           <section className="favorites">
@@ -19,8 +19,8 @@ function Favorites():JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {<FavoritesCard />}
-                  {<FavoritesCard />}
+                  <FavoritesCard />
+                  <FavoritesCard />
                 </div>
               </li>
               <li className="favorites__locations-items">
@@ -32,7 +32,7 @@ function Favorites():JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {<FavoritesCard />}
+                  <FavoritesCard />
                 </div>
               </li>
             </ul>

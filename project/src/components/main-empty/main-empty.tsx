@@ -4,12 +4,12 @@ import Locations from '../locations/locations';
 function MainEmpty(): JSX.Element {
   return (
     <div className="page page--gray page--main">
-      {<Header />}
+      <Header />
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            {<Locations/>}
+            <Locations/>
           </section>
         </div>
         <div className="cities">

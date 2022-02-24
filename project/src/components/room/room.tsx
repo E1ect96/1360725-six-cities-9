@@ -4,7 +4,7 @@ import PlaceCard from '../place-card/place-card';
 function Room():JSX.Element {
   return (
     <div className="page">
-      {<Header />}
+      <Header />
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -273,7 +273,7 @@ function Room():JSX.Element {
                     <button
                       className="reviews__submit form__submit button"
                       type="submit"
-                      disabled=""
+                      disabled
                     >
                       Submit
                     </button>
@@ -290,9 +290,9 @@ function Room():JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              {<PlaceCard />}
-              {<PlaceCard />}
-              {<PlaceCard />}
+              <PlaceCard />
+              <PlaceCard />
+              <PlaceCard />
             </div>
           </section>
         </div>

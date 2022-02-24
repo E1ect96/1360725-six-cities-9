@@ -16,7 +16,7 @@ function Header(): JSX.Element {
               />
             </a>
           </div>
-          {<Nav/>}
+          <Nav/>
         </div>
       </div>
     </header>

@@ -10,12 +10,12 @@ type MainProps = {
 function Main({placesCount}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
-      {<Header />}
+      <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            {<Locations/>}
+            <Locations/>
           </section>
         </div>
         <div className="cities">
@@ -50,11 +50,11 @@ function Main({placesCount}: MainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: placesCount}, PlaceCard)}
+                {Array.from({length: placesCount}, () => <PlaceCard />)}
               </div>
             </section>
             <div className="cities__right-section">
-              {<Map />}
+              <Map />
             </div>
           </div>
         </div>
