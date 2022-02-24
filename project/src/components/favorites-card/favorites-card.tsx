@@ -20,8 +20,8 @@ function FavoritesCard():JSX.Element {
           <div className="place-card__price">
             <b className="place-card__price-value">€180</b>
             <span className="place-card__price-text">
-                        /&nbsp;night
-                      </span>
+              &#47;&nbsp;night
+            </span>
           </div>
           <button
             className="place-card__bookmark-button place-card__bookmark-button--active button"
@@ -39,7 +39,7 @@ function FavoritesCard():JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: "100%" }} />
+            <span style={{ width: '100%' }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
