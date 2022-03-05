@@ -1,6 +1,7 @@
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import {AppRoute} from '../../consts';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {AppRoute, AuthorizationStatus} from '../../consts';
 import Main from '../main/main';
+import PrivateRoute from '../private-route/private-route';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import Room from '../room/room';
@@ -20,7 +21,11 @@ function App({placesCount}: AppProps): JSX.Element {
         />
         <Route
           path={ AppRoute.Favorites}
-          element={<Favorites/>}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <Favorites />
+            </PrivateRoute>
+          }
         />
         <Route
           path={AppRoute.Login}
