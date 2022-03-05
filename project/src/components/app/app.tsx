@@ -4,6 +4,7 @@ import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import Room from '../room/room';
+import PageNotFound from '../page-not-found/page-not-found';
 
 type AppProps = {
   placesCount: number;
@@ -28,6 +29,10 @@ function App({placesCount}: AppProps): JSX.Element {
         <Route
           path={AppRoute.Room}
           element={<Room/>}
+        />
+        <Route
+          path="*"
+          element={<PageNotFound/>}
         />
       </Routes>
     </BrowserRouter>
