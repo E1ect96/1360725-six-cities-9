@@ -24,8 +24,8 @@ function PageNotFound():JSX.Element {
                   >
                     <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                     <span className="header__user-name user__name">
-                  Oliver.conner@gmail.com
-                </span>
+                      Oliver.conner@gmail.com
+                    </span>
                   </a>
                 </li>
                 <li className="header__nav-item">
