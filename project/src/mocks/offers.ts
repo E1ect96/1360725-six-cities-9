@@ -35,8 +35,9 @@ export const offers: Offers = [
         date: 'August 28',
         review: 'Nemo enim ipsam voluptatem, nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil...',
       },
-    ]
-  }, {
+    ],
+  },
+  {
     id: 1,
     photo: 'https://i.pinimg.com/originals/68/8e/32/688e32cd90dbb711edc5812f7d05975d.jpg',
     isPremuim: true,
@@ -72,7 +73,8 @@ export const offers: Offers = [
         review: 'Nemo enim ipsam voluptatem, nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil...',
       },
     ],
-  }, {
+  },
+  {
     id: 2,
     photo: 'https://divisare-res.cloudinary.com/images/c_limit,f_auto,h_2000,q_auto,w_3000/v1490958815/kkofaeofhmpw57956lq6/morris-adjmi-architects-mark-mahaney-matthew-williams-jimi-billingsley-wythe-hotel.jpg',
     isPremuim: false,
@@ -84,7 +86,7 @@ export const offers: Offers = [
       '\n' +
       'An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.\n',
     type: OfferType.Hotel,
-    isFavorite: false,
+    isFavorite: true,
     rating: 3,
     bedroomsNumber: 1,
     maximumGuests: 2,
@@ -140,5 +142,5 @@ export const offers: Offers = [
         review: 'Nemo enim ipsam voluptatem, nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil...',
       },
     ],
-  }
+  },
 ];

@@ -1,5 +1,6 @@
 import Header from '../header/header';
 import PlaceCard from '../place-card/place-card';
+import {offers} from '../../mocks/offers';
 
 function Room():JSX.Element {
   return (
@@ -290,9 +291,9 @@ function Room():JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
+              <PlaceCard offer={offers[0]}/>
+              <PlaceCard offer={offers[1]}/>
+              <PlaceCard offer={offers[2]}/>
             </div>
           </section>
         </div>
