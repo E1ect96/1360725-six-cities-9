@@ -3,21 +3,34 @@ import {Offer} from '../../mocks/offer';
 
 type PlaceCardProps = {
   offer: Offer;
+  onActiveCard: (offer: number) => void;
+  activeCard: number;
 }
 
-function PlaceCard({offer}: PlaceCardProps): JSX.Element {
-  const {id, photo, isPremuim, price, header, type, isFavorite, rating} = offer;
+function PlaceCard({offer, onActiveCard, activeCard}: PlaceCardProps): JSX.Element {
+  const {id, photos, isPremuim, price, header, type, isFavorite, rating} = offer;
+  const favoriteClassName = `place-card__bookmark-button${isFavorite ? isFavorite && '--active button' : ' button'}`;
+  const premiumClassname = `place-card__mark ${isPremuim ? '' : 'visually-hidden'}`;
 
   return (
-    <article className="cities__place-card place-card">
-      <div className={`place-card__mark ${isPremuim ? '' : 'visually-hidden'}`}>
+    <article
+      className="cities__place-card place-card"
+      id={String(id)}
+      onMouseEnter={() => {
+        onActiveCard(offer.id);
+      }}
+      onMouseLeave={() => {
+        onActiveCard(0);
+      }}
+    >
+      <div className={premiumClassname}>
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`offer/${id}`}>
           <img
             className="place-card__image"
-            src={photo}
+            src={photos[0]}
             width={260}
             height={200}
             alt="Place image"
@@ -31,7 +44,7 @@ function PlaceCard({offer}: PlaceCardProps): JSX.Element {
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button ${isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
+            className={favoriteClassName}
             type="button"
           >
             <svg

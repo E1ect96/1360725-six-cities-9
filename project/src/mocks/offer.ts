@@ -9,7 +9,7 @@ export type Host = {
 
 export type Offer ={
   id: number,
-  photo: string,
+  photos: Array<string>,
   isPremuim: boolean,
   price: number,
   header: string,
