@@ -1,7 +1,12 @@
 import Header from '../header/header';
-import FavoritesCard from '../favorites-card/favorites-card';
+import FavoritesList from '../favorites-list/favorites-list';
+import {Offers} from '../../mocks/offer';
 
-function Favorites():JSX.Element {
+type FavoritesProps ={
+  offers: Offers;
+}
+
+function Favorites({offers}:FavoritesProps):JSX.Element {
   return (
     <div className="page">
       <Header />
@@ -18,10 +23,7 @@ function Favorites():JSX.Element {
                     </a>
                   </div>
                 </div>
-                <div className="favorites__places">
-                  <FavoritesCard />
-                  <FavoritesCard />
-                </div>
+                <FavoritesList offers={offers} />
               </li>
               <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
@@ -31,9 +33,7 @@ function Favorites():JSX.Element {
                     </a>
                   </div>
                 </div>
-                <div className="favorites__places">
-                  <FavoritesCard />
-                </div>
+                <FavoritesList offers={offers} />
               </li>
             </ul>
           </section>

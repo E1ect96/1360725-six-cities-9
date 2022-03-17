@@ -6,24 +6,25 @@ import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import Room from '../room/room';
 import PageNotFound from '../page-not-found/page-not-found';
+import {Offers} from '../../mocks/offer';
 
 type AppProps = {
-  placesCount: number;
+  offers: Offers;
 }
 
-function App({placesCount}: AppProps): JSX.Element {
+function App({offers}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path = {AppRoute.Main}
-          element={<Main placesCount={placesCount} />}
+          element={<Main offers={offers} />}
         />
         <Route
           path={ AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favorites />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <Favorites offers={offers} />
             </PrivateRoute>
           }
         />
@@ -33,7 +34,7 @@ function App({placesCount}: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Room}
-          element={<Room/>}
+          element={<Room offer ={offers[0]}/>}
         />
         <Route
           path="*"
