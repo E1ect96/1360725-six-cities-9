@@ -1,4 +1,4 @@
-import {City, OfferType} from '../consts';
+import {CityName, OfferType} from '../consts';
 import {Reviews} from './reviews';
 
 export type Host = {
@@ -7,11 +7,21 @@ export type Host = {
   isPro: boolean,
 }
 
-
+export type City ={
+  cityName: CityName,
+  location: {
+    lat: number,
+    lng: number,
+    zoom: number,
+  },
+}
 
 export type Offer ={
   id: number,
-  coordinates: Array<number>,
+  coordinates: {
+    lat:number,
+    lng:number,
+  },
   city: City,
   photos: Array<string>,
   isPremuim: boolean,

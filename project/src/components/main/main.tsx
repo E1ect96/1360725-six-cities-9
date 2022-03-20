@@ -1,8 +1,9 @@
 import Locations from '../locations/locations';
 import Map from '../map/map';
 import Header from '../header/header';
-import {Offers} from '../../mocks/offer';
+import {Offer, Offers} from '../../mocks/offer';
 import OffersList from '../offers-list/offers-list';
+import {useState} from 'react';
 
 
 type MainProps = {
@@ -10,6 +11,17 @@ type MainProps = {
 }
 
 function Main({offers}: MainProps): JSX.Element {
+  const city = offers[0].city;
+
+  const [activeCard, setActiveCard] = useState< Offer | undefined>(
+    undefined,
+  );
+
+  const onListItemHover = (id: string) => {
+    const currentOffer = offers.find((offer) => String(offer.id) === id);
+    setActiveCard(currentOffer);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -34,10 +46,18 @@ function Main({offers}: MainProps): JSX.Element {
                   </svg>
                 </span>
               </form>
-              <OffersList />
+              <OffersList offers={offers} onListItemHover={onListItemHover}/>
             </section>
             <div className="cities__right-section">
-              <Map />
+              <section className="cities__map map">
+                {
+                  <Map
+                    city={city}
+                    offers={offers}
+                    activeCard={activeCard}
+                  />
+                }
+              </section>
             </div>
           </div>
         </div>

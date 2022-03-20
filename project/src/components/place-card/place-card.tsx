@@ -1,26 +1,29 @@
+import {MouseEvent} from 'react';
 import {Link} from 'react-router-dom';
 import {Offer} from '../../mocks/offer';
 
 type PlaceCardProps = {
   offer: Offer;
-  onActiveCard: (offer: number) => void;
-  activeCard: number;
+  onListItemHover: (listItemName: string) => void;
 }
 
-function PlaceCard({offer, onActiveCard, activeCard}: PlaceCardProps): JSX.Element {
+function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
   const {id, photos, isPremuim, price, header, type, isFavorite, rating} = offer;
   const favoriteClassName = `place-card__bookmark-button${isFavorite ? isFavorite && '--active button' : ' button'}`;
   const premiumClassname = `place-card__mark ${isPremuim ? '' : 'visually-hidden'}`;
+
+  const listItemHoverHandler = (event: MouseEvent<HTMLLIElement>) => {
+    event.preventDefault();
+    onListItemHover(event.currentTarget.id);
+  };
 
   return (
     <article
       className="cities__place-card place-card"
       id={String(id)}
-      onMouseEnter={() => {
-        onActiveCard(offer.id);
-      }}
+      onMouseEnter={listItemHoverHandler}
       onMouseLeave={() => {
-        onActiveCard(0);
+        onListItemHover('0');
       }}
     >
       <div className={premiumClassname}>
