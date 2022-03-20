@@ -17,3 +17,12 @@ export enum OfferType {
   House = 'House',
   Hotel = 'Hotel',
 }
+
+export enum City {
+  Amsterdam = 'Amsterdam',
+  Hamburg = 'Hamburg',
+  Dusseldorf = 'Dusseldorf',
+  Paris = 'Paris',
+  Cologne = 'Cologne',
+  Brussels = 'Brussels',
+}
