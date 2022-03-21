@@ -41,6 +41,7 @@ export const offers: Offers = [
     },
     reviews: [
       {
+        id: 0,
         avatar: 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4d/4d03deb82831169838714d9e5378a953374d9a93_full.jpg',
         name: 'Oleg',
         rate: 4,
@@ -90,6 +91,7 @@ export const offers: Offers = [
     },
     reviews: [
       {
+        id: 0,
         avatar: 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/13/136e8eaced31098ba53bf3c2999e2e1c04810899_full.jpg',
         name: 'Oleg',
         rate: 4,
@@ -136,6 +138,7 @@ export const offers: Offers = [
     },
     reviews: [
       {
+        id: 0,
         avatar: 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4c/4cefcd58f04534d5bcec2b8829c500e9e239e23a_full.jpg',
         name: 'Oleg',
         rate: 4,
@@ -184,6 +187,7 @@ export const offers: Offers = [
     },
     reviews: [
       {
+        id: 0,
         avatar: 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4d/4d033ad9c9b9a883f33b4d9b3e5781e6ad873e80_full.jpg',
         name: 'Oleg',
         rate: 4,
@@ -234,6 +238,7 @@ export  const neighbourhoodOffers: Offers = [
     },
     reviews: [
       {
+        id: 0,
         avatar: 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4d/4d03deb82831169838714d9e5378a953374d9a93_full.jpg',
         name: 'Oleg',
         rate: 4,
@@ -283,6 +288,7 @@ export  const neighbourhoodOffers: Offers = [
     },
     reviews: [
       {
+        id: 0,
         avatar: 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/13/136e8eaced31098ba53bf3c2999e2e1c04810899_full.jpg',
         name: 'Oleg',
         rate: 4,
@@ -329,6 +335,7 @@ export  const neighbourhoodOffers: Offers = [
     },
     reviews: [
       {
+        id: 0,
         avatar: 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4c/4cefcd58f04534d5bcec2b8829c500e9e239e23a_full.jpg',
         name: 'Oleg',
         rate: 4,
