@@ -337,4 +337,4 @@ export  const neighbourhoodOffers: Offers = [
       },
     ],
   },
-]
+];

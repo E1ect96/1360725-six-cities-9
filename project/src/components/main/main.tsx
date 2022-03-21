@@ -4,6 +4,7 @@ import Header from '../header/header';
 import {Offer, Offers} from '../../mocks/offer';
 import OffersList from '../offers-list/offers-list';
 import {useState} from 'react';
+import {MAP_HEIGHT} from '../../consts';
 
 
 type MainProps = {
@@ -55,6 +56,7 @@ function Main({offers}: MainProps): JSX.Element {
                     city={city}
                     offers={offers}
                     activeCard={activeCard}
+                    height={MAP_HEIGHT}
                   />
                 }
               </section>
