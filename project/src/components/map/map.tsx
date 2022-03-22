@@ -21,8 +21,7 @@ import {
 type MapProps = {
   city: City;
   offers: Offers;
-  activeCard: Offer | undefined;
-  height: string;
+  activeCard: Offer | null;
 };
 
 const defaultCustomIcon = new Icon({
@@ -38,7 +37,7 @@ const currentCustomIcon = new Icon({
 });
 
 function Map(props:MapProps): JSX.Element {
-  const {city, offers, activeCard, height} = props;
+  const {city, offers, activeCard} = props;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -53,7 +52,7 @@ function Map(props:MapProps): JSX.Element {
 
         marker
           .setIcon(
-            activeCard !== undefined && offer.id === activeCard.id
+            activeCard !== null && offer.id === activeCard.id
               ? currentCustomIcon
               : defaultCustomIcon,
           )
@@ -65,7 +64,7 @@ function Map(props:MapProps): JSX.Element {
   return (
     <div
       ref={mapRef}
-      style={{height: height}}
+      style={{height: '1158px'}}
     >
     </div>
   );

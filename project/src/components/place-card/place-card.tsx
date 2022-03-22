@@ -1,4 +1,3 @@
-import {MouseEvent} from 'react';
 import {Link} from 'react-router-dom';
 import {Offer} from '../../mocks/offer';
 
@@ -12,9 +11,8 @@ function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
   const favoriteClassName = `place-card__bookmark-button${isFavorite ? isFavorite && '--active button' : ' button'}`;
   const premiumClassname = `place-card__mark ${isPremuim ? '' : 'visually-hidden'}`;
 
-  const listItemHoverHandler = (event: MouseEvent<HTMLLIElement>) => {
-    event.preventDefault();
-    onListItemHover(event.currentTarget.id);
+  const listItemHoverHandler = () => {
+    onListItemHover(String(offer.id));
   };
 
   return (
@@ -23,7 +21,7 @@ function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
       id={String(id)}
       onMouseEnter={listItemHoverHandler}
       onMouseLeave={() => {
-        onListItemHover('0');
+        onListItemHover(String(offer.id));
       }}
     >
       <div className={premiumClassname}>
