@@ -13,13 +13,13 @@ type MainProps = {
 function Main({offers}: MainProps): JSX.Element {
   const city = offers[0].city;
 
-  const [activeCard, setActiveCard] = useState< Offer | undefined>(
-    undefined,
+  const [activeCard, setActiveCard] = useState< Offer | null>(
+    null,
   );
 
   const onListItemHover = (id: string) => {
     const currentOffer = offers.find((offer) => String(offer.id) === id);
-    setActiveCard(currentOffer);
+    setActiveCard(currentOffer ?? null);
   };
 
   return (
