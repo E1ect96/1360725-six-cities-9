@@ -21,7 +21,7 @@ import {
 type MapProps = {
   city: City;
   offers: Offers;
-  activeCard: Offer | undefined;
+  activeCard: Offer | null;
 };
 
 const defaultCustomIcon = new Icon({
@@ -52,7 +52,7 @@ function Map(props:MapProps): JSX.Element {
 
         marker
           .setIcon(
-            activeCard !== undefined && offer.id === activeCard.id
+            activeCard !== null && offer.id === activeCard.id
               ? currentCustomIcon
               : defaultCustomIcon,
           )

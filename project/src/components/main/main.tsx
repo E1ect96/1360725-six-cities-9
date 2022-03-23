@@ -4,6 +4,7 @@ import Header from '../header/header';
 import {Offer, Offers} from '../../mocks/offer';
 import OffersList from '../offers-list/offers-list';
 import {useState} from 'react';
+import {MAP_HEIGHT} from '../../consts';
 
 
 type MainProps = {
@@ -13,13 +14,13 @@ type MainProps = {
 function Main({offers}: MainProps): JSX.Element {
   const city = offers[0].city;
 
-  const [activeCard, setActiveCard] = useState< Offer | undefined>(
-    undefined,
+  const [activeCard, setActiveCard] = useState< Offer | null>(
+    null,
   );
 
   const onListItemHover = (id: string) => {
     const currentOffer = offers.find((offer) => String(offer.id) === id);
-    setActiveCard(currentOffer);
+    setActiveCard(currentOffer ?? null);
   };
 
   return (
@@ -55,6 +56,7 @@ function Main({offers}: MainProps): JSX.Element {
                     city={city}
                     offers={offers}
                     activeCard={activeCard}
+                    height={MAP_HEIGHT}
                   />
                 }
               </section>
