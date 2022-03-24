@@ -1,6 +1,7 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {CityName} from '../consts';
 import {offers} from '../mocks/offers';
+import {changeCity, fillOffersList} from './action';
 
 const initialState = {
   currentCity: CityName.Amsterdam,

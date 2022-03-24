@@ -5,6 +5,10 @@ import {offers} from './mocks/offers';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App  offers = {offers}/>
+    <Provider store={store}>
+      <App
+        offers = {offers}
+      />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'));
