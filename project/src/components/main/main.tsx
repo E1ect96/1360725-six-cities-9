@@ -4,6 +4,10 @@ import Header from '../header/header';
 import {Offer, Offers} from '../../mocks/offer';
 import OffersList from '../offers-list/offers-list';
 import {useState} from 'react';
+import {useAppSelector} from '../../hooks';
+import {SortTypes} from '../../consts';
+import {sortPriceToHigh, sortPriceToLow, sortRatingToHigh} from '../../utils';
+import Sort from '../sort/sort';
 
 
 type MainProps = {
@@ -11,8 +15,7 @@ type MainProps = {
 }
 
 function Main({offers}: MainProps): JSX.Element {
-  const city = offers[0].city;
-
+  const {currentCity, currentSortType} = useAppSelector((state) => state);
   const [activeCard, setActiveCard] = useState< Offer | null>(
     null,
   );
@@ -21,6 +24,22 @@ function Main({offers}: MainProps): JSX.Element {
     const currentOffer = offers.find((offer) => String(offer.id) === id);
     setActiveCard(currentOffer ?? null);
   };
+
+  switch (currentSortType) {
+    case SortTypes.PriceLowToHigh:
+      offers.sort(sortPriceToHigh);
+      break;
+    case SortTypes.PriceHighToLow:
+      offers.sort(sortPriceToLow);
+      break;
+    case SortTypes.RatingLowToHigh:
+      offers.sort(sortRatingToHigh);
+      break;
+    case SortTypes.Popular:
+      break;
+    default:
+      offers = offers.filter((offer) => offer.city.name === currentCity.name);
+  }
 
   return (
     <div className="page page--gray page--main">
@@ -36,15 +55,10 @@ function Main({offers}: MainProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in {currentCity.name}</b>
               <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
-                    <use xlinkHref="#icon-arrow-select" />
-                  </svg>
-                </span>
+                <span className="places__sorting-caption">Sort by </span>
+                <Sort />
               </form>
               <OffersList offers={offers} onListItemHover={onListItemHover}/>
             </section>
@@ -52,7 +66,8 @@ function Main({offers}: MainProps): JSX.Element {
               <section className="cities__map map">
                 {
                   <Map
-                    city={city}
+                    key={JSON.stringify(currentCity.location.lng + currentCity.location.lat)}
+                    city={currentCity}
                     offers={offers}
                     activeCard={activeCard}
                   />
