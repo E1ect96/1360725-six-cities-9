@@ -8,7 +8,7 @@ export type Host = {
 }
 
 export type City ={
-  cityName: CityName,
+  name: CityName,
   location: {
     lat: number,
     lng: number,

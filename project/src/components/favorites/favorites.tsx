@@ -1,12 +1,9 @@
 import Header from '../header/header';
 import FavoritesList from '../favorites-list/favorites-list';
-import {Offers} from '../../mocks/offer';
+import {useAppSelector} from '../../hooks';
 
-type FavoritesProps ={
-  offers: Offers;
-}
-
-function Favorites({offers}:FavoritesProps):JSX.Element {
+function Favorites():JSX.Element {
+  const {offers} = useAppSelector((state) => state);
   return (
     <div className="page">
       <Header />

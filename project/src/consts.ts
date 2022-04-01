@@ -27,22 +27,70 @@ export enum CityName {
   Brussels = 'Brussels',
 }
 
-export const Cities = {
-  Amsterdam: {
-    cityName: CityName.Amsterdam,
+export const Cities = [
+  {
+    name: CityName.Paris,
     location: {
-      lat: 52.374,
-      lng: 4.88969,
+      lat: 48.85661,
+      lng: 2.351499,
       zoom: 12,
     },
   },
-};
+  {
+    name: CityName.Cologne,
+    location: {
+      lat: 50.938361,
+      lng: 6.959974,
+      zoom: 12,
+    },
+  },
+  {
+    name: CityName.Brussels,
+    location: {
+      lat: 50.846557,
+      lng: 4.351697,
+      zoom: 12,
+    },
+  },
+  {
+    name: CityName.Amsterdam,
+    location: {
+      lat: 52.37454,
+      lng: 4.897976,
+      zoom: 12,
+    },
+  },
+  {
+    name: CityName.Hamburg,
+    location: {
+      lat: 53.550341,
+      lng: 10.000654,
+      zoom: 12,
+    },
+  },
+  {
+    name: CityName.Dusseldorf,
+    location: {
+      lat: 51.225402,
+      lng: 6.776314,
+      zoom: 12,
+    },
+  },
+];
+
 
 export const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+  'img/pin.svg';
 
 export const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+  'img/pin-active.svg';
+
+export enum SortTypes {
+  Popular = 'Popular',
+  PriceLowToHigh = 'Price: low to high',
+  PriceHighToLow = 'Price: high to low',
+  RatingLowToHigh = 'Top rated first',
+}
 
 export const MAP_HEIGHT = '1158px';
 
