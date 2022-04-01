@@ -6,29 +6,20 @@ import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import Room from '../room/room';
 import PageNotFound from '../page-not-found/page-not-found';
-import {Offers} from '../../mocks/offer';
-import {useAppSelector} from '../../hooks';
 
-type AppProps = {
-  offers: Offers;
-}
-
-function App({offers}: AppProps): JSX.Element {
-  const {currentCity} = useAppSelector((state) => state);
-  const currentCityOffers = offers.filter((offer) => offer.city.name === currentCity.name);
-
+function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path = {AppRoute.Main}
-          element={<Main offers={currentCityOffers} />}
+          element={<Main />}
         />
         <Route
           path={ AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <Favorites offers={offers} />
+              <Favorites />
             </PrivateRoute>
           }
         />
@@ -38,7 +29,7 @@ function App({offers}: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Room}
-          element={<Room openOffer ={offers[0]}/>}
+          element={<Room />}
         />
         <Route
           path="*"

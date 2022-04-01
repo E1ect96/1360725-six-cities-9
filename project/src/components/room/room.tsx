@@ -2,30 +2,29 @@ import Header from '../header/header';
 import {Offer} from '../../mocks/offer';
 import CommentForm from '../comment-form/comment-form';
 import OffersList from '../offers-list/offers-list';
-import {neighbourhoodOffers, offers} from '../../mocks/offers';
+import {neighbourhoodOffers} from '../../mocks/offers';
 import {useState} from 'react';
 import {PROPERTY_MAP_HEIGHT} from '../../consts';
 import Map from '../map/map';
 import CommentsList from '../comments-list/comments-list';
+import {useAppSelector} from '../../hooks';
 
-type RoomProps = {
-  openOffer: Offer;
-}
-
-function Room({openOffer}: RoomProps):JSX.Element {
+function Room():JSX.Element {
+  const {offers} = useAppSelector((state) => state);
+  const openOffer = offers[0];
   const {photos, isPremuim, price, header, description, type, isFavorite, rating, bedroomsNumber, maximumGuests, amenities, host, reviews} = openOffer;
   const {name, isPro, avatar} = host;
   const favoriteClassName = `property__bookmark-button${isFavorite ? isFavorite && ' property__bookmark-button--active button' : ' button'}`;
 
   const city = offers[0].city;
 
-  const [activeCard, setActiveCard] = useState < Offer | undefined>(
-    undefined,
+  const [activeCard, setActiveCard] = useState < Offer | null>(
+    null,
   );
 
   const onListItemHover = (id: string) => {
-    const currentOffer = offers.find((offer) => String(offer.id) === id);
-    setActiveCard(currentOffer);
+    const currentOffer = neighbourhoodOffers.find((offer) => String(offer.id) === id);
+    setActiveCard(currentOffer ?? null);
   };
 
   return (

@@ -2,23 +2,25 @@ import {useAppSelector} from '../../hooks';
 import {SortTypes} from '../../consts';
 import {store} from '../../store';
 import {changeSortType} from '../../store/action';
+import {useState} from 'react';
 
 function Sort():JSX.Element {
   const {currentSortType} = useAppSelector((state) => state);
-  const onListClick = ():void => {
-    const sortListElement = document.querySelector('.places__options');
-    sortListElement && sortListElement.classList.toggle('places__options--opened');
+  const [isOpened, setOpenedStatus] = useState(false);
+  const handlerSortFormCLick = () => {
+    setOpenedStatus(!isOpened);
   };
+
 
   return (
     <>
-      <span className="places__sorting-type" tabIndex={0}  onClick={onListClick}>
+      <span className="places__sorting-type" tabIndex={0}  onClick={handlerSortFormCLick}>
         {currentSortType}
         <svg className="places__sorting-arrow" width={7} height={4}>
           <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
-      <ul className="places__options places__options--custom">
+      <ul className={`places__options places__options--custom places__options${isOpened ? '--opened' : ''}`}>
         {(Object.keys(SortTypes) as Array<keyof typeof SortTypes>).map((sort) => (
           <li
             key={SortTypes[sort]}
