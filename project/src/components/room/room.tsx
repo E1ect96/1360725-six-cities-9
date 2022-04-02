@@ -1,5 +1,5 @@
 import Header from '../header/header';
-import {Offer} from '../../mocks/offer';
+import {Offer} from '../../types/offer';
 import CommentForm from '../comment-form/comment-form';
 import OffersList from '../offers-list/offers-list';
 import {neighbourhoodOffers} from '../../mocks/offers';

@@ -1,5 +1,5 @@
 import {CityName, OfferType} from '../consts';
-import {Reviews} from './reviews';
+import {Reviews} from '../mocks/reviews';
 
 export type Host = {
   avatar: string,

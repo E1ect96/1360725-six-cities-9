@@ -12,7 +12,7 @@ import {
   City,
   Offer,
   Offers
-} from '../../mocks/offer';
+} from '../../types/offer';
 import {
   URL_MARKER_CURRENT,
   URL_MARKER_DEFAULT

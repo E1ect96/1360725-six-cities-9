@@ -1,5 +1,5 @@
 import PlaceCard from '../place-card/place-card';
-import {Offers} from '../../mocks/offer';
+import {Offers} from '../../types/offer';
 
 type PropsType = {
   offers: Offers;

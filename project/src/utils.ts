@@ -1,4 +1,4 @@
-import {Offer} from './mocks/offer';
+import {Offer} from './types/offer';
 
 export const sortPriceToHigh = (prev: Offer, next: Offer) => prev.price - next.price;
 export const sortPriceToLow = (prev: Offer, next: Offer) => next.price - prev.price;
