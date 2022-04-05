@@ -95,3 +95,11 @@ export enum SortTypes {
 export const MAP_HEIGHT = '1158px';
 
 export const PROPERTY_MAP_HEIGHT = '579px';
+
+export enum APIRoute {
+  Hotels = '/hotels',
+  Favorite = '/favorite',
+  Comments = '/comments',
+  Login = '/login',
+  Logout = '/logout',
+}
