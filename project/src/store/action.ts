@@ -17,3 +17,5 @@ export const changeSortType = createAction('changeSortType', (value: SortTypes) 
 export const loadOffers = createAction<Offers>('loadOffers');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+
+export const setError = createAction<string>('setError');

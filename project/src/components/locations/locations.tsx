@@ -5,10 +5,10 @@ import {useAppSelector} from '../../hooks';
 import {Link} from 'react-router-dom';
 
 function Locations(): JSX.Element {
-  const {Cities, currentCity} = useAppSelector((state) => state);
+  const {cities, currentCity} = useAppSelector((state) => state);
   return (
     <ul className="locations__list tabs__list">
-      {Cities.map((city) => (
+      {cities.map((city) => (
         <li
           className="locations__item"
           key={city.name}
