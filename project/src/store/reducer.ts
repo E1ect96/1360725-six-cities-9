@@ -1,17 +1,25 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {AuthorizationStatus, Cities, SortTypes} from '../consts';
-import {offers as offerItems} from '../mocks/offers';
 import {
   changeCity,
   changeSortType,
   fillOffersList,
   loadOffers, requireAuthorization,
 } from './action';
+import {City, Offers} from '../types/offer';
 
-const initialState = {
-  Cities,
+type InitialState ={
+  cities: City[],
+  currentCity: City,
+  offers: Offers,
+  currentSortType: SortTypes,
+  authorizationStatus: AuthorizationStatus,
+}
+
+const initialState: InitialState = {
+  cities: Cities,
   currentCity:  Cities[0],
-  offers: offerItems,
+  offers: [],
   currentSortType: SortTypes.Popular,
   authorizationStatus: AuthorizationStatus.Unknown,
 };

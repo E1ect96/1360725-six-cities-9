@@ -95,9 +95,3 @@ export enum SortTypes {
 export const MAP_HEIGHT = '1158px';
 
 export const PROPERTY_MAP_HEIGHT = '579px';
-
-export enum AuthorizationStatus {
-  Auth = 'AUTH',
-  NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN',
-}
