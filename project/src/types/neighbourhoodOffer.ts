@@ -1,23 +1,8 @@
-import {CityName, OfferType} from '../consts';
+import {OfferType} from '../consts';
 import {Reviews} from '../mocks/reviews';
+import {City, Host} from './offer';
 
-export type Host = {
-  avatarUrl: string,
-  id: number,
-  name: string,
-  isPro: boolean,
-}
-
-export type City ={
-  name: CityName,
-  location: {
-    latitude: number,
-    longitude: number,
-    zoom: number,
-  },
-}
-
-export type Offer ={
+export type NeighbourhoodOffer ={
   id: number,
   location: {
     latitude:number,
@@ -26,7 +11,7 @@ export type Offer ={
   },
   city: City,
   previewImage: string,
-  photos: Array<string>
+  photos: Array<string>,
   isPremium: boolean,
   price: number,
   title: string,
@@ -39,4 +24,4 @@ export type Offer ={
   goods: Array<string>,
   host: Host,
 };
-export type Offers = Offer[];
+export type NeighbourhoodOffers = NeighbourhoodOffer[];

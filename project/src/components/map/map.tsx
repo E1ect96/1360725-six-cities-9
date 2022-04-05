@@ -17,11 +17,12 @@ import {
   URL_MARKER_CURRENT,
   URL_MARKER_DEFAULT
 } from '../../consts';
+import {NeighbourhoodOffer, NeighbourhoodOffers} from '../../types/neighbourhoodOffer';
 
 type MapProps = {
   city: City;
-  offers: Offers;
-  activeCard: Offer | null;
+  offers: Offers | NeighbourhoodOffers;
+  activeCard: Offer | null | NeighbourhoodOffer;
   height: string;
 };
 
@@ -47,8 +48,8 @@ function Map(props:MapProps): JSX.Element {
     if (map) {
       offers.forEach((offer) => {
         const marker = new Marker({
-          lat: offer.coordinates.lat,
-          lng: offer.coordinates.lng,
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
         });
 
         marker

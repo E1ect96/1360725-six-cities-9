@@ -45,7 +45,7 @@ function Main(): JSX.Element {
               <section className="cities__map map">
                 {
                   <Map
-                    key={JSON.stringify(currentCity.location.lng + currentCity.location.lat)}
+                    key={JSON.stringify(currentCity.location.longitude + currentCity.location.latitude)}
                     city={currentCity}
                     offers={sortedOffers}
                     activeCard={activeCard}

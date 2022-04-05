@@ -1,8 +1,9 @@
 import PlaceCard from '../place-card/place-card';
 import {Offers} from '../../types/offer';
+import {NeighbourhoodOffers} from '../../types/neighbourhoodOffer';
 
 type PropsType = {
-  offers: Offers;
+  offers: Offers | NeighbourhoodOffers;
   onListItemHover: (listItemName: string) => void;
 }
 

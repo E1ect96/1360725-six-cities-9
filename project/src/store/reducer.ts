@@ -16,6 +16,7 @@ type InitialState ={
   currentSortType: SortTypes,
   authorizationStatus: AuthorizationStatus,
   error: string,
+  isDataLoaded: boolean,
 }
 
 const initialState: InitialState = {
@@ -25,6 +26,7 @@ const initialState: InitialState = {
   currentSortType: SortTypes.Popular,
   authorizationStatus: AuthorizationStatus.Unknown,
   error: '',
+  isDataLoaded: false,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -40,6 +42,7 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOffers, (state, action) => {
       state.offers = action.payload;
+      state.isDataLoaded = true;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

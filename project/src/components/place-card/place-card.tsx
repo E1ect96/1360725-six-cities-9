@@ -1,15 +1,16 @@
 import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
+import {NeighbourhoodOffer} from '../../types/neighbourhoodOffer';
 
 type PlaceCardProps = {
-  offer: Offer;
+  offer: Offer | NeighbourhoodOffer;
   onListItemHover: (listItemName: string) => void;
 }
 
 function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
-  const {id, photos, isPremuim, price, header, type, isFavorite, rating} = offer;
+  const {id, previewImage, isPremium, price, title, type, isFavorite, rating} = offer;
   const favoriteClassName = `place-card__bookmark-button${isFavorite ? isFavorite && '--active button' : ' button'}`;
-  const premiumClassname = `place-card__mark ${isPremuim ? '' : 'visually-hidden'}`;
+  const premiumClassname = `place-card__mark ${isPremium ? '' : 'visually-hidden'}`;
 
   const listItemHoverHandler = () => {
     onListItemHover(String(offer.id));
@@ -31,7 +32,7 @@ function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
         <Link to={`offer/${id}`}>
           <img
             className="place-card__image"
-            src={photos[0]}
+            src={previewImage}
             width={260}
             height={200}
             alt="Place image"
@@ -66,7 +67,7 @@ function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
         </div>
         <h2 className="place-card__name">
           <Link to={`offer/${id}`}>
-            {header}
+            {title}
           </Link>
         </h2>
         <p className="place-card__type">{type}</p>

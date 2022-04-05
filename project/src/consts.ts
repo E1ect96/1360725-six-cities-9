@@ -1,3 +1,5 @@
+import {City} from './types/offer';
+
 export enum AppRoute {
   Login = '/login',
   Favorites = '/favorites',
@@ -27,52 +29,52 @@ export enum CityName {
   Brussels = 'Brussels',
 }
 
-export const Cities = [
+export const Cities:City[] = [
   {
     name: CityName.Paris,
     location: {
-      lat: 48.85661,
-      lng: 2.351499,
+      latitude: 48.85661,
+      longitude: 2.351499,
       zoom: 12,
     },
   },
   {
     name: CityName.Cologne,
     location: {
-      lat: 50.938361,
-      lng: 6.959974,
+      latitude: 50.938361,
+      longitude: 6.959974,
       zoom: 12,
     },
   },
   {
     name: CityName.Brussels,
     location: {
-      lat: 50.846557,
-      lng: 4.351697,
+      latitude: 50.846557,
+      longitude: 4.351697,
       zoom: 12,
     },
   },
   {
     name: CityName.Amsterdam,
     location: {
-      lat: 52.37454,
-      lng: 4.897976,
+      latitude: 52.37454,
+      longitude: 4.897976,
       zoom: 12,
     },
   },
   {
     name: CityName.Hamburg,
     location: {
-      lat: 53.550341,
-      lng: 10.000654,
+      latitude: 53.550341,
+      longitude: 10.000654,
       zoom: 12,
     },
   },
   {
     name: CityName.Dusseldorf,
     location: {
-      lat: 51.225402,
-      lng: 6.776314,
+      latitude: 51.225402,
+      longitude: 6.776314,
       zoom: 12,
     },
   },

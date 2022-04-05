@@ -9,7 +9,7 @@ import {dropToken, saveToken} from '../services/token';
 import {errorHandle} from '../services/error-handle';
 
 export const clearErrorAction = createAsyncThunk(
-  'game/clearError',
+  'clearError',
   () => {
     setTimeout(
       () => store.dispatch(setError('')),
@@ -30,6 +30,20 @@ export const fetchOffersAction = createAsyncThunk(
 
   },
 );
+
+export const fetchNeighbourhoodOffersAction = createAsyncThunk(
+  'data/fetchOffers',
+  async () => {
+    try {
+      const {data} = await api.get<Offers>(APIRoute.Hotels);
+      store.dispatch(loadOffers(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+
+  },
+);
+
 
 export const checkAuthAction = createAsyncThunk(
   'user/checkAuth',
@@ -70,6 +84,5 @@ export const logoutAction = createAsyncThunk(
     } catch (error) {
       errorHandle(error);
     }
-
   },
 );
