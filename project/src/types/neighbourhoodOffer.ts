@@ -1,5 +1,4 @@
 import {OfferType} from '../consts';
-import {Reviews} from '../mocks/reviews';
 import {City, Host} from './offer';
 
 export type NeighbourhoodOffer ={
