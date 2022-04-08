@@ -1,7 +1,7 @@
 import Locations from '../locations/locations';
 import Map from '../map/map';
 import Header from '../header/header';
-import {Offer} from '../../mocks/offer';
+import {Offer} from '../../types/offer';
 import OffersList from '../offers-list/offers-list';
 import {useState} from 'react';
 import {useAppSelector} from '../../hooks';
@@ -45,7 +45,7 @@ function Main(): JSX.Element {
               <section className="cities__map map">
                 {
                   <Map
-                    key={JSON.stringify(currentCity.location.lng + currentCity.location.lat)}
+                    key={JSON.stringify(currentCity.location.longitude + currentCity.location.latitude)}
                     city={currentCity}
                     offers={sortedOffers}
                     activeCard={activeCard}

@@ -1,5 +1,5 @@
 import FavoritesCard from '../favorites-card/favorites-card';
-import {Offers} from '../../mocks/offer';
+import {Offers} from '../../types/offer';
 
 type FavoritesProps ={
   offers: Offers;
