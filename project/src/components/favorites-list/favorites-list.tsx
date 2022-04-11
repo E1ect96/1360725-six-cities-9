@@ -1,8 +1,8 @@
 import FavoritesCard from '../favorites-card/favorites-card';
-import {Favorite} from '../../types/favorite';
+import {Offer} from '../../types/offer';
 
 type FavoritesProps ={
-  favoriteOffers: Favorite[];
+  favoriteOffers: Offer[];
 }
 
 function FavoritesList({favoriteOffers}:FavoritesProps):JSX.Element {

@@ -2,14 +2,13 @@ import {State} from '../../types/state';
 import {NameSpace, SortTypes} from '../../consts';
 import {City, Offer, Offers} from '../../types/offer';
 import {Review} from '../../types/review';
-import {Favorite} from '../../types/favorite';
 import {sortPriceToHigh, sortPriceToLow, sortRatingToHigh} from '../../utils';
 
 export const getOffers = (state: State): Offers => state[NameSpace.data].offers;
 export const getCurrentOffer = (state: State): Offer | null => state[NameSpace.data].currentOffer;
 export const getCurrentOffersNearby = (state: State): Offer[] => state[NameSpace.data].currentOffersNearby;
 export const getCurrentOfferComments = (state: State): Review[] => state[NameSpace.data].currentOfferComments;
-export const getFavoriteOffers = (state: State): Favorite[] => state[NameSpace.data].favoriteOffers;
+export const getFavoriteOffers = (state: State): Offer[] => state[NameSpace.data].favoriteOffers;
 export const getCurrentSortType = (state: State): string => state[NameSpace.data].currentSortType;
 export const getLoadedDataStatus = (state: State): boolean => state[NameSpace.data].isDataLoaded;
 export const getCurrentCity = (state: State): City => state[NameSpace.data].currentCity;

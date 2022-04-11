@@ -1,7 +1,7 @@
-import {Favorite} from '../../types/favorite';
+import {Offer} from '../../types/offer';
 
 type FavoritesCardProps ={
-  offer: Favorite;
+  offer: Offer;
 }
 
 function FavoritesCard({offer}: FavoritesCardProps):JSX.Element {

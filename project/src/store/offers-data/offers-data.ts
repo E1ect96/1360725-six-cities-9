@@ -2,7 +2,6 @@ import {Cities, NameSpace, SortTypes} from '../../consts';
 import {createSlice} from '@reduxjs/toolkit';
 import {City, Offer, Offers} from '../../types/offer';
 import {Review} from '../../types/review';
-import {Favorite} from '../../types/favorite';
 
 type InitialStateType = {
   cities: City[];
@@ -12,7 +11,7 @@ type InitialStateType = {
   currentOffersNearby: Offer[];
   currentOfferComments: Review[];
   currentSortType: SortTypes;
-  favoriteOffers: Favorite[];
+  favoriteOffers: Offer[];
   isDataLoaded: boolean;
   reviews: Review[];
 };
