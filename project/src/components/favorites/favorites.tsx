@@ -1,5 +1,4 @@
 import Header from '../header/header';
-import FavoritesList from '../favorites-list/favorites-list';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getFavoriteOffers} from '../../store/offers-data/selectors';
 import {useEffect} from 'react';
@@ -8,6 +7,7 @@ import {fetchFavoriteOffers} from '../../store/api-actions';
 import EmptyFavoriteList from '../favorites-list/empty-favorite-list';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../consts';
+import FavoriteCardList from '../favorite-card-list/favorite-card-list';
 
 function Favorites():JSX.Element {
   const favorites = useAppSelector (getFavoriteOffers);
@@ -23,7 +23,7 @@ function Favorites():JSX.Element {
       <main className={`page__main page__main--favorites ${favorites ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
           {
-            favorites.length === 0 ? <EmptyFavoriteList /> : <FavoritesList favoriteOffers={favorites} />
+            favorites.length === 0 ? <EmptyFavoriteList /> : <FavoriteCardList favoritesOffers={favorites} />
           }
         </div>
       </main>

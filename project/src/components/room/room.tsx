@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {
   getCurrentOffer,
   getCurrentOfferComments,
-  getCurrentOffersNearby,
+  getCurrentOffersNearby, getFavoriteOffers,
   getLoadedDataStatus
 } from '../../store/offers-data/selectors';
 import {useParams} from 'react-router-dom';
@@ -25,6 +25,7 @@ function Room():JSX.Element {
     setSelectedPoint(offer);
   };
 
+  const favorites = useAppSelector(getFavoriteOffers);
   const currentOffer = useAppSelector(getCurrentOffer);
   const reviews = useAppSelector(getCurrentOfferComments);
   const nearbyOffers = useAppSelector(getCurrentOffersNearby);
@@ -37,7 +38,7 @@ function Room():JSX.Element {
     store.dispatch(fetchCurrentOfferComments(Number(id)));
     store.dispatch(fetchNearbyOffersAction(Number(id)));
 
-  }, [dispatch, id]);
+  }, [dispatch, id, favorites, isDataLoaded]);
 
   if (!isDataLoaded) {
     return (

@@ -33,8 +33,10 @@ export const offersData = createSlice({
   name: NameSpace.data,
   initialState,
   reducers: {
-    changeCity: (state, action) => {
-      state.currentCity = action.payload;
+    setCity: (state, action) => {
+      if (state.currentCity.name !== action.payload.name) {
+        state.currentCity = action.payload;
+      }
     },
     changeSortType: (state, action) => {
       state.currentSortType = action.payload;
@@ -61,4 +63,4 @@ export const offersData = createSlice({
   },
 });
 
-export const { changeCity, changeSortType, loadOffers, loadCurrentOffer, loadCurrentOfferComments, loadCurrentOffersNearby, loadFavoriteOffers, setNewReview } = offersData.actions;
+export const {setCity, changeSortType, loadOffers, loadCurrentOffer, loadCurrentOfferComments, loadCurrentOffersNearby, loadFavoriteOffers, setNewReview } = offersData.actions;

@@ -146,3 +146,15 @@ export const fetchSendReview = createAsyncThunk(
     }
   },
 );
+
+export const fetchOfferAction = createAsyncThunk(
+  'data/fetchOffers',
+  async() => {
+    try {
+      const {data} = await api.get<Offers>(APIRoute.Offers);
+      store.dispatch(loadOffers(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
