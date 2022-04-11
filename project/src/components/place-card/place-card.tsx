@@ -1,41 +1,60 @@
 import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
-import {NeighbourhoodOffer} from '../../types/neighbourhoodOffer';
+import {AppRoute, AuthorizationStatus} from '../../consts';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useState} from 'react';
+import {redirectToRoute} from '../../store/action';
+import {fetchFavoriteOffers, fetchOffersAction, toggleFavoriteAction} from '../../store/api-actions';
+import BookmarkButton from '../bookmark-button/bookmark-button';
+import {ratingWidth} from '../../utils';
 
 type PlaceCardProps = {
-  offer: Offer | NeighbourhoodOffer;
-  onListItemHover: (listItemName: string) => void;
+  offer: Offer;
+  onPlaceCardHover: (offer: Offer | null) => void;
 }
 
-function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
+function PlaceCard({offer, onPlaceCardHover}: PlaceCardProps): JSX.Element {
   const {id, previewImage, isPremium, price, title, type, isFavorite, rating} = offer;
-  const favoriteClassName = `place-card__bookmark-button${isFavorite ? isFavorite && '--active button' : ' button'}`;
   const premiumClassname = `place-card__mark ${isPremium ? '' : 'visually-hidden'}`;
 
-  const listItemHoverHandler = () => {
-    onListItemHover(String(offer.id));
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const [isOfferFavorite, setToggleFavorite] = useState(offer.isFavorite);
+  const dispatch = useAppDispatch();
+  const postFavoriteFlag = offer.isFavorite ? 0 : 1;
+
+  const handleFavoriteClick = () => {
+    if (authorizationStatus !== AuthorizationStatus.Auth) {
+      dispatch(redirectToRoute(AppRoute.Login));
+    }
+    dispatch(toggleFavoriteAction({
+      id: offer.id,
+      flag: postFavoriteFlag,
+    }));
+
+    setToggleFavorite(!isOfferFavorite);
+
+    dispatch(fetchOffersAction());
+    dispatch(fetchFavoriteOffers());
   };
 
   return (
     <article
       className="cities__place-card place-card"
-      id={String(id)}
-      onMouseEnter={listItemHoverHandler}
-      onMouseLeave={() => {
-        onListItemHover(String(offer.id));
-      }}
+      onMouseOver = {() => onPlaceCardHover(offer)}
+      onMouseOut = {() => onPlaceCardHover(null)}
     >
       <div className={premiumClassname}>
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`offer/${id}`}>
+        <Link to={`${AppRoute.Offer}/${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
             width={260}
             height={200}
-            alt="Place image"
+            alt={title}
           />
         </Link>
       </div>
@@ -45,28 +64,21 @@ function PlaceCard({offer, onListItemHover}: PlaceCardProps): JSX.Element {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button
-            className={favoriteClassName}
-            type="button"
-          >
-            <svg
-              className="place-card__bookmark-icon"
-              width={18}
-              height={19}
-            >
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <BookmarkButton
+            isFavorite={isFavorite}
+            handleBookmarkButtonClick={handleFavoriteClick}
+            isSmall
+            prefix={'place-card'}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${rating * 20}%` }} />
+            <span style={{ width: `${ratingWidth(rating)}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`offer/${id}`}>
+          <Link to={`${AppRoute.Offer}/${id}`}>
             {title}
           </Link>
         </h2>

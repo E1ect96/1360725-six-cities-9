@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {AppRoute} from '../../consts';
+import {AppRoute, AuthorizationStatus} from '../../consts';
 import Main from '../main/main';
 import PrivateRoute from '../private-route/private-route';
 import Favorites from '../favorites/favorites';
@@ -8,10 +8,15 @@ import Room from '../room/room';
 import PageNotFound from '../page-not-found/page-not-found';
 import {useAppSelector} from '../../hooks';
 import LoadingScreen from '../loading-screen/loading-screen';
-import {isCheckedAuth} from '../../utils';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {getLoadedDataStatus} from '../../store/offers-data/selectors';
+
+const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean =>
+  authorizationStatus === AuthorizationStatus.Unknown;
 
 function App(): JSX.Element {
-  const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isDataLoaded = useAppSelector(getLoadedDataStatus);
 
   if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
     return (

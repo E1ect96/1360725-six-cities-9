@@ -17,14 +17,14 @@ import {
   URL_MARKER_CURRENT,
   URL_MARKER_DEFAULT
 } from '../../consts';
-import {NeighbourhoodOffer, NeighbourhoodOffers} from '../../types/neighbourhoodOffer';
 
 type MapProps = {
   city: City;
-  offers: Offers | NeighbourhoodOffers;
-  activeCard: Offer | null | NeighbourhoodOffer;
-  height: string;
-};
+  currentOffers: Offers;
+  selectedPoint: Offer | null;
+  className: string;
+  height: number;
+}
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -38,15 +38,15 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40],
 });
 
-function Map(props:MapProps): JSX.Element {
-  const {city, offers, activeCard, height} = props;
+const markers:Marker[] = [];
 
+function Map({city, currentOffers, selectedPoint, className, height}:MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
   useEffect(() => {
     if (map) {
-      offers.forEach((offer) => {
+      currentOffers.forEach((offer) => {
         const marker = new Marker({
           lat: offer.location.latitude,
           lng: offer.location.longitude,
@@ -54,21 +54,28 @@ function Map(props:MapProps): JSX.Element {
 
         marker
           .setIcon(
-            activeCard !== null && offer.id === activeCard.id
+            selectedPoint !== null && offer.id === selectedPoint.id
               ? currentCustomIcon
-              : defaultCustomIcon,
-          )
+              : defaultCustomIcon)
           .addTo(map);
+        markers.push(marker);
       });
     }
-  }, [map, offers, activeCard]);
+    return () => {
+      markers.forEach((marker) => {
+        if (map) {
+          marker.removeFrom(map);
+        }
+      });
+    };
+  }, [map, currentOffers, selectedPoint]);
 
   return (
-    <div
+    <section
+      className={className}
       ref={mapRef}
       style={{height: height}}
-    >
-    </div>
+    />
   );
 }
 
