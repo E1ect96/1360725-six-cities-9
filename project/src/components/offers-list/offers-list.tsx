@@ -1,21 +1,22 @@
 import PlaceCard from '../place-card/place-card';
-import {Offers} from '../../types/offer';
-import {NeighbourhoodOffers} from '../../types/neighbourhoodOffer';
+import {Offer, Offers} from '../../types/offer';
 
-type PropsType = {
-  offers: Offers | NeighbourhoodOffers;
-  onListItemHover: (listItemName: string) => void;
+type OffersListProps = {
+  offers: Offers;
+  onPlaceCardHover: (offer: Offer | null) => void;
+  className: string;
 }
 
-function OffersList({offers, onListItemHover}: PropsType):JSX.Element {
+function OffersList({offers, onPlaceCardHover, className}: OffersListProps):JSX.Element {
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={className}>
       {offers.map((offer) => (
         <PlaceCard
           key = {offer.id}
           offer={offer}
-          onListItemHover={onListItemHover}
-        />))}
+          onPlaceCardHover={onPlaceCardHover}
+        />
+      ))}
     </div>
   );
 }

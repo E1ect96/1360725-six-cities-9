@@ -1,4 +1,5 @@
 import {CityName, OfferType} from '../consts';
+import {Review} from './review';
 
 export type Host = {
   avatarUrl: string,
@@ -25,7 +26,7 @@ export type Offer ={
   },
   city: City,
   previewImage: string,
-  photos: Array<string>
+  images: Array<string>
   isPremium: boolean,
   price: number,
   title: string,
@@ -37,5 +38,6 @@ export type Offer ={
   maxAdults: number
   goods: Array<string>,
   host: Host,
+  reviews: Review[],
 };
 export type Offers = Offer[];

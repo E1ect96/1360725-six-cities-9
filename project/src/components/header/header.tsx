@@ -2,7 +2,11 @@ import Nav from '../nav/nav';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../consts';
 
-function Header(): JSX.Element {
+type HeaderProps = {
+  isThisPageLogin?: boolean;
+}
+
+function Header({isThisPageLogin}:HeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -21,7 +25,7 @@ function Header(): JSX.Element {
               />
             </Link>
           </div>
-          <Nav/>
+          {!isThisPageLogin && <Nav />}
         </div>
       </div>
     </header>

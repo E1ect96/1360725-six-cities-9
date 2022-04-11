@@ -4,7 +4,9 @@ export enum AppRoute {
   Login = '/login',
   Favorites = '/favorites',
   Room = '/offer/:id',
+  Offer = '/offer',
   Main = '/',
+  NotFound= '/404'
 }
 
 export enum AuthorizationStatus {
@@ -80,6 +82,7 @@ export const Cities:City[] = [
   },
 ];
 
+export const INITIAL_CITY = Cities[0];
 
 export const URL_MARKER_DEFAULT =
   'img/pin.svg';
@@ -99,11 +102,12 @@ export const MAP_HEIGHT = '1158px';
 export const PROPERTY_MAP_HEIGHT = '579px';
 
 export enum APIRoute {
-  Hotels = '/hotels',
-  Favorite = '/favorite',
+  Offers = '/hotels',
   Comments = '/comments',
   Login = '/login',
   Logout = '/logout',
+  Favorite = '/favorite',
+  Reviews = '/comments',
 }
 
 export const TIMEOUT_SHOW_ERROR = 2000;
@@ -112,4 +116,38 @@ export enum HTTP_CODE {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
+}
+
+export enum NameSpace {
+  data = 'DATA',
+  user = 'USER',
+  offers = 'OFFERS',
+}
+
+export const PERCENT_PER_STAR = 20;
+export const MAX_REVIEWS_COUNT = 10;
+
+export const MONTHS_NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+export const RATING_VALUES = [5, 4, 3, 2, 1];
+
+export enum RatingName {
+  'Terribly',
+  'Badly',
+  'Not bad',
+  'Good',
+  'Perfect',
 }

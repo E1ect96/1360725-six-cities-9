@@ -1,43 +1,36 @@
 import Header from '../header/header';
 import FavoritesList from '../favorites-list/favorites-list';
-import {useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {getFavoriteOffers} from '../../store/offers-data/selectors';
+import {useEffect} from 'react';
+import {store} from '../../store';
+import {fetchFavoriteOffers} from '../../store/api-actions';
+import EmptyFavoriteList from '../favorites-list/empty-favorite-list';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../consts';
 
 function Favorites():JSX.Element {
-  const {offers} = useAppSelector((state) => state);
+  const favorites = useAppSelector (getFavoriteOffers);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    store.dispatch(fetchFavoriteOffers());
+  }, [dispatch]);
+
   return (
     <div className="page">
       <Header />
-      <main className="page__main page__main--favorites">
+      <main className={`page__main page__main--favorites ${favorites ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <ul className="favorites__list">
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Amsterdam</span>
-                    </a>
-                  </div>
-                </div>
-                <FavoritesList offers={offers} />
-              </li>
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Cologne</span>
-                    </a>
-                  </div>
-                </div>
-                <FavoritesList offers={offers} />
-              </li>
-            </ul>
-          </section>
+          {
+            favorites.length === 0 ? <EmptyFavoriteList /> : <FavoritesList favoriteOffers={favorites} />
+          }
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link className="footer__logo-link"
+          to={AppRoute.Main}
+        >
           <img
             className="footer__logo"
             src="img/logo.svg"
@@ -45,7 +38,7 @@ function Favorites():JSX.Element {
             width={64}
             height={33}
           />
-        </a>
+        </Link>
       </footer>
     </div>
   );

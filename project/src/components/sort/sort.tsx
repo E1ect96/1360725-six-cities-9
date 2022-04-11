@@ -1,11 +1,12 @@
 import {useAppSelector} from '../../hooks';
 import {SortTypes} from '../../consts';
 import {store} from '../../store';
-import {changeSortType} from '../../store/action';
 import {useState} from 'react';
+import {changeSortType} from '../../store/offers-data/offers-data';
+import {getCurrentSortType} from '../../store/offers-data/selectors';
 
 function Sort():JSX.Element {
-  const {currentSortType} = useAppSelector((state) => state);
+  const currentSortType = useAppSelector(getCurrentSortType);
   const [isOpened, setOpenedStatus] = useState(false);
   const handlerSortFormCLick = () => {
     setOpenedStatus(!isOpened);

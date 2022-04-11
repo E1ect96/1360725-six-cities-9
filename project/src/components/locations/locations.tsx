@@ -1,19 +1,19 @@
-import {AppRoute} from '../../consts';
-import {store} from '../../store';
-import {changeCity} from '../../store/action';
-import {useAppSelector} from '../../hooks';
+import {AppRoute, Cities} from '../../consts';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {Link} from 'react-router-dom';
+import {changeCity} from '../../store/offers-data/offers-data';
+import {getCurrentCity} from '../../store/offers-data/selectors';
 
 function Locations(): JSX.Element {
-  const {cities, currentCity} = useAppSelector((state) => state);
+  const currentCity = useAppSelector(getCurrentCity);
+  const dispatch = useAppDispatch();
   return (
     <ul className="locations__list tabs__list">
-      {cities.map((city) => (
+      {Cities.map((city) => (
         <li
           className="locations__item"
           key={city.name}
-          id={city.name}
-          onClick={() => {store.dispatch(changeCity(city));}}
+          onClick={() => dispatch(changeCity(city))}
         >
           <Link
             className={`locations__item-link tabs__item ${city.name === currentCity.name ? 'tabs__item--active' : ''}`}
