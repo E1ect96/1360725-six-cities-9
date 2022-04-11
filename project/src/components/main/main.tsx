@@ -3,15 +3,18 @@ import Map from '../map/map';
 import Header from '../header/header';
 import {Offer} from '../../types/offer';
 import OffersList from '../offers-list/offers-list';
-import {useState} from 'react';
-import {useAppSelector} from '../../hooks';
+import {useEffect, useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {MAP_HEIGHT} from '../../consts';
 import Sort from '../sort/sort';
 import {getCurrentCity, getLoadedDataStatus, getSortedOffers} from '../../store/offers-data/selectors';
 import LoadingScreen from '../loading-screen/loading-screen';
 import MainEmpty from '../main-empty/main-empty';
+import {store} from '../../store';
+import {fetchFavoriteOffers} from '../../store/api-actions';
 
 function Main(): JSX.Element {
+  const dispatch = useAppDispatch();
   const [selectedPoint, setSelectedPoint] = useState<Offer | null>(null);
   const onPlaceCardHover = (offer: Offer | null) => {
     setSelectedPoint(offer);
@@ -20,6 +23,11 @@ function Main(): JSX.Element {
   const currentCity = useAppSelector(getCurrentCity);
   const isDataLoaded = useAppSelector(getLoadedDataStatus);
   const sortedOffers = useAppSelector(getSortedOffers);
+
+  useEffect(() => {
+    store.dispatch(fetchFavoriteOffers());
+  }, [dispatch]);
+
   return (
     <div className="page page--gray page--main">
       <Header />

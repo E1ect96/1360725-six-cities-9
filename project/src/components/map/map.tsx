@@ -68,7 +68,7 @@ function Map({city, currentOffers, selectedPoint, className, height}:MapProps): 
         }
       });
     };
-  }, [map, currentOffers, selectedPoint]);
+  }, [map, currentOffers, selectedPoint, city]);
 
   return (
     <section
