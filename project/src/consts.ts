@@ -91,3 +91,7 @@ export enum SortTypes {
   PriceHighToLow = 'Price: high to low',
   RatingLowToHigh = 'Top rated first',
 }
+
+export const MAP_HEIGHT = '1158px';
+
+export const PROPERTY_MAP_HEIGHT = '579px';

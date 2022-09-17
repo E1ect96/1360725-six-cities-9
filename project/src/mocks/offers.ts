@@ -205,7 +205,7 @@ export  const neighbourhoodOffers: Offers = [
       lat: 52.3909553943508,
       lng: 4.85309666406198,
     },
-    city: Cities.Amsterdam,
+    city: Cities[0],
     photos: [
       'https://avatars.mds.yandex.net/i?id=5acd08ff5aee62f99d025e731970e2cb-5670589-images-thumbs&n=13',
       'https://avatars.mds.yandex.net/i?id=5acd08ff5aee62f99d025e731970e2cb-5670589-images-thumbs&n=13',
@@ -253,7 +253,7 @@ export  const neighbourhoodOffers: Offers = [
       lat: 52.369553943508,
       lng: 4.85309666406198,
     },
-    city: Cities.Amsterdam,
+    city: Cities[0],
     photos: [
       'https://i.pinimg.com/originals/68/8e/32/688e32cd90dbb711edc5812f7d05975d.jpg',
       'https://i.pinimg.com/originals/68/8e/32/688e32cd90dbb711edc5812f7d05975d.jpg',
@@ -303,7 +303,7 @@ export  const neighbourhoodOffers: Offers = [
       lat: 52.3909553943508,
       lng: 4.929309666406198,
     },
-    city: Cities.Amsterdam,
+    city: Cities[0],
     photos: [
       'https://divisare-res.cloudinary.com/images/c_limit,f_auto,h_2000,q_auto,w_3000/v1490958815/kkofaeofhmpw57956lq6/morris-adjmi-architects-mark-mahaney-matthew-williams-jimi-billingsley-wythe-hotel.jpg',
       'https://divisare-res.cloudinary.com/images/c_limit,f_auto,h_2000,q_auto,w_3000/v1490958815/kkofaeofhmpw57956lq6/morris-adjmi-architects-mark-mahaney-matthew-williams-jimi-billingsley-wythe-hotel.jpg',
